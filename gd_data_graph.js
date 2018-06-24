@@ -49,7 +49,7 @@ let _uids = 0
 
 const uid = () => "DG_" + ++_uids
 
-export default function data_graph(){
+export default function graph(){
     // node id and node data
     const _n = {}
     // object map of edges from one node

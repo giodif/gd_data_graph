@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.default = data_graph;
+exports.default = graph;
 // node -> object that represents the intersection of edges
 // edge -> unidirectional path from one node to another
 //         _nodes only know about adjacent _nodes and don't know who their adjacent
@@ -61,7 +61,7 @@ var uid = function uid() {
     return "DG_" + ++_uids;
 };
 
-function data_graph() {
+function graph() {
     // node id and node data
     var _n = {};
     // object map of edges from one node
