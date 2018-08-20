@@ -28,6 +28,10 @@ var _map = function _map(obj, fn) {
     return obj2;
 };
 
+var _c = function _c() {
+    return true;
+};
+
 //uid index shared by all graphs
 var _uids = 0;
 
@@ -106,14 +110,15 @@ function graph() {
     };
 
     var connect = function connect(id1, id2) {
-        var w = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
+        var c = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : _c;
 
         if (connected(id1, id2)) {
             return false;
         }
-        _e[id1][id2] = w;
+        _e[id1][id2] = c;
         return true;
     };
+
     var sever = function sever(id1, id2) {
         if (!connected(id1, id2)) {
             return false;

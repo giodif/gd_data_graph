@@ -18,6 +18,8 @@ const _map = (obj, fn) => {
     return obj2
 }
 
+const _c = () => true
+
 //uid index shared by all graphs
 let _uids = 0
 
@@ -60,7 +62,7 @@ export default function graph(){
     const connected = (id1, id2) => {
         return has(id1)
         && has(id2)
-        && _e[id1].hasOwnProperty( id2 )
+        && _e[id1].hasOwnProperty(id2)
     }
 
     const ids = () => Object.keys(_n)
@@ -68,11 +70,9 @@ export default function graph(){
     const edges = id => has(id) ? _e[id] : false
     const degree = id => has(id) ? _e[id].length : false
     const remove = id => {
-        if( !has(id) ){
-            return false
-        }
-        delete _n[ id ]
-        delete _e[ id ]
+        if (!has(id)) { return false }
+        delete _n[id]
+        delete _e[id]
         return true
     }
 
@@ -83,13 +83,14 @@ export default function graph(){
         return id;
     }
 
-    const connect = (id1, id2, w=1) => {
-        if( connected(id1, id2) ){ return false }
-        _e[id1][id2] = w
+    const connect = (id1, id2, c = _c ) => {
+        if (connected(id1, id2)) { return false }
+        _e[id1][id2] = c
         return true
     }
+
     const sever = (id1, id2) => {
-        if( !connected(id1, id2) ){ return false }
+        if (!connected(id1, id2)) { return false }
         delete _e[id][id2]
         return true
     }
